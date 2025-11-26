@@ -24,14 +24,17 @@
   </div>
 
   <main class="glass" id="mainContent" style="display:none;">
-    <h1><i class="fas fa-gem"></i>theBalm COLLABORATION</h1>
+    <h1><i class="fas fa-gem"></i>Partnership Inquiry Form</h1>
     <p>
       Join our premium campaign. Fill the form, agree to our terms, choose up to
       <strong>20 items</strong> from our
       <a href="https://thebalm.com/" target="_blank" rel="noopener">Shop</a>,
       and we’ll prepare your package.
     </p>
-
+  <div class="instructions" aria-live="polite">
+<p style="margin:0;color:var(--muted);font-size:14px">Please read the Terms &amp; Conditions and submit the PDF document for review — your collaboration request will be processed after submission.</p>
+</div>
+</div>
     <!-- ---------- FORM START ---------- -->
     <form id="collabForm" class="collab-form classic" novalidate>
       <div class="field-grid">
@@ -61,16 +64,11 @@
         <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP" required></textarea>
       </div>
 
-      <!-- Payment selector -->
-      <div class="form-group">
+      <!-- Payment selector -->      <div class="form-group">
         <label class="section-label">Preferred payment method</label>
         <input type="hidden" id="paymentMethodHidden" name="paymentMethod" value="Chime">
 
         <div class="payment-grid" role="radiogroup" aria-label="Payment method">
-          <input type="radio" id="pm-chime" name="pm" value="Chime" checked hidden>
-          <label for="pm-chime" class="payment-card" tabindex="0" role="radio" aria-checked="true">
-            <div class="pc-left">Chime</div><div class="pc-right">Preferred</div>
-          </label>
 
           <input type="radio" id="pm-apple" name="pm" value="Apple Pay" hidden>
           <label for="pm-apple" class="payment-card" tabindex="0" role="radio">
@@ -96,18 +94,13 @@
           <label for="pm-binance" class="payment-card" tabindex="0" role="radio">
             <div class="pc-left">Binance</div><div class="pc-right">Crypto</div>
           </label>
-
-          <input type="radio" id="pm-bank" name="pm" value="Bank Transfer" hidden>
-          <label for="pm-bank" class="payment-card" tabindex="0" role="radio">
-            <div class="pc-left">Bank Transfer</div><div class="pc-right">Wire / ACH</div>
-          </label>
         </div>
       </div>
 
       <!-- Image uploads (20 inputs) -->
       <div class="form-group">
         <label class="section-label">Upload up to 20 item screenshots</label>
-        <p class="section-description">Take screenshots of the items you want from our <a href="https://thebalm.com/" target="_blank">Shop</a>. Upload them below: and upload them here.</p>
+       <p class="section-description">Take screenshots of the items you want from our <a href="https://thebalm.com/" target="_blank">Shop</a>. Upload them below: and upload them here.</p>
 
         <div class="image-upload-grid" id="imageUploadGrid" aria-label="Upload screenshots">
           <!-- generate 20 file inputs named img1..img20 -->
@@ -141,7 +134,7 @@
 
       <label class="terms">
         <input type="checkbox" id="agree" required>
-        <span>I agree to the <a href="theBalm.pdf" target="_blank">Collaboration Terms & Conditions</a></span>
+        <span>I agree to the <a href="thebalms.pdf" target="_blank">Collaboration Terms & Conditions</a></span>
       </label>
 
       <div class="form-actions">
