@@ -237,8 +237,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailLink = document.getElementById("emailLink");
       if (emailLink) {
         const subject = `Collaboration Submission from ${data.name || ""}`;
-        const body = `Hi,\n\nMy name is ${data.name || ""} and I have completed the collaboration form and downloaded the agreement.\n\nPreferred payment method: ${data.payment || ""}`;
-        emailLink.innerHTML = `<i class="fas fa-envelope"></i> Send Email`;
+      const body = `Hi,\n\nMy name is ${data.name || ""} and I have completed the collaboration form and downloaded the agreement for review.\n\nI will be making payment via: ${data.payment || ""}`;
+          emailLink.innerHTML = `<i class="fas fa-envelope"></i> Send Email`;
         emailLink.href = `mailto:thebalmcollaboration@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       }
     } catch (err) {
