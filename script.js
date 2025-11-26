@@ -130,8 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       doc.setFont("helvetica", "normal");
       // replace brand name as needed
       doc.text("theBalm Cosmetics", 20, y); y += lineHeight;
-      doc.text("Website: thebalm.com", 20, y); y += lineHeight;
-      doc.text("Instagram: @thebalm", 20, y); y += lineHeight * 2;
+
 
       doc.setFont("helvetica", "bold");
       doc.text("Influencer Details", 20, y); y += lineHeight;
@@ -187,10 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
       doc.setFont("helvetica", "normal");
       doc.text(`Items Provided (${imageFiles.length}): $0`, 25, y); y += lineHeight;
       doc.text(`Payment Method: ${payment}`, 25, y); y += lineHeight;
-      doc.text("Tax Fee: $200", 25, y); y += lineHeight;
+      doc.text("Tax Fee: $100", 25, y); y += lineHeight;
       doc.text("------------------------------------------------------", 25, y); y += lineHeight;
       doc.setFont("helvetica", "bold");
-      doc.text("Total Payable: $200", 25, y); y += lineHeight * 2;
+      doc.text("Total Payable: $100", 25, y); y += lineHeight * 2;
 
       doc.setFontSize(10);
       doc.setFont("helvetica", "italic");
