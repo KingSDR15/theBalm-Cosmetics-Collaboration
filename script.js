@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const phone = (formData.get("phone") || "").toString().trim();
       const address = (formData.get("address") || "").toString().trim();
 
+      // NEW: additional fields present on index.html
+      const tiktok = (formData.get("tiktok") || "").toString().trim();
+      const audience = (formData.get("audience") || "").toString().trim();
+      const mediakit = (formData.get("mediakit") || "").toString().trim();
+      const typical_rate = (formData.get("typical_rate") || "").toString().trim();
+      const country = (formData.get("country") || "").toString().trim();
+
       // payment: support multiple field names
       const paymentRaw =
         formData.get("payment") ||
@@ -37,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
         null;
       const payment = (paymentRaw || "Not specified").toString().trim();
 
-      // collect image files (1..20)
+      // collect image files (1..30)
       const imageFiles = [];
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= 30; i++) {
         const file = formData.get(`img${i}`);
         if (file && file.type && file.type.startsWith("image/")) {
           imageFiles.push(file);
@@ -138,6 +145,17 @@ document.addEventListener("DOMContentLoaded", () => {
       doc.text(`Full Name: ${trimOr(name)}`, 20, y); y += lineHeight;
       doc.text(`Email Address: ${trimOr(email)}`, 20, y); y += lineHeight;
       doc.text(`Instagram Handle: ${trimOr(insta)}`, 20, y); y += lineHeight;
+      // NEW: write TikTok
+      doc.text(`TikTok Handle: ${trimOr(tiktok)}`, 20, y); y += lineHeight;
+      // NEW: other handles
+      doc.text(`Other Handles: ${trimOr(audience)}`, 20, y); y += lineHeight;
+      // NEW: portfolio / mediakit
+      doc.text(`Portfolio / Media Kit: ${trimOr(mediakit)}`, 20, y); y += lineHeight;
+      // NEW: typical rate
+      doc.text(`Typical Rate / Budget: ${trimOr(typical_rate)}`, 20, y); y += lineHeight;
+      // NEW: country / state
+      doc.text(`Country / State: ${trimOr(country)}`, 20, y); y += lineHeight;
+
       doc.text(`Phone Number: ${trimOr(phone)}`, 20, y); y += lineHeight;
       doc.text(`Delivery Address: ${trimOr(address)}`, 20, y); y += lineHeight;
 
@@ -147,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       doc.setFont("helvetica", "normal");
       // print payment neatly to the right, with wrapping if long
-      doc.text(payment, 59, y, { maxWidth: 90 });
+      doc.text(payment, 72, y, { maxWidth: 90 });
 
       y += lineHeight * 1.6;
 
@@ -181,15 +199,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       y += lineHeight;
+
+      // ====== START CHANGE: force Invoice Summary onto its OWN PAGE ======
+      // Always create a new page so the invoice is on its own page.
+      // Reset the vertical cursor so invoice content starts at the top.
+      doc.addPage();
+      y = 20;
+      // ====== END CHANGE ======
+
       doc.setFont("helvetica", "bold");
       doc.text("Invoice Summary", 20, y); y += lineHeight;
       doc.setFont("helvetica", "normal");
       doc.text(`Items Provided (${imageFiles.length}): $0`, 25, y); y += lineHeight;
       doc.text(`Payment Method: ${payment}`, 25, y); y += lineHeight;
-      doc.text("Tax Fee: $100", 25, y); y += lineHeight;
+      doc.text("Tax Fee: -", 25, y); y += lineHeight;
       doc.text("------------------------------------------------------", 25, y); y += lineHeight;
       doc.setFont("helvetica", "bold");
-      doc.text("Total Payable: $100", 25, y); y += lineHeight * 2;
+      doc.text("Total Payable: 2,000.00 USD", 25, y); y += lineHeight * 2;
 
       doc.setFontSize(10);
       doc.setFont("helvetica", "italic");
@@ -215,7 +241,8 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           URL.revokeObjectURL(url);
           if (a && a.parentNode) a.parentNode.removeChild(a);
-          afterDownloadSuccess({ name, payment });
+          // pass all useful data to afterDownloadSuccess
+          afterDownloadSuccess({ name, payment, email, insta, tiktok, audience, mediakit, typical_rate, country, phone });
         }, 300); // small delay to ensure browser started download
       } catch (err) {
         console.error("Failed creating blob/download:", err);
@@ -237,9 +264,39 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailLink = document.getElementById("emailLink");
       if (emailLink) {
         const subject = `Collaboration Submission from ${data.name || ""}`;
-      const body = `Hi,\n\nMy name is ${data.name || ""} and I have completed the collaboration form and downloaded the agreement for review.\n\nI will be making payment via: ${data.payment || ""}`;
-          emailLink.innerHTML = `<i class="fas fa-envelope"></i> Send Email`;
-        emailLink.href = `mailto:thebalmcollaboration@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // PROFESSIONAL message per your request
+        const bodyPlain = [
+          `Hello,`,
+          ``,
+          `My name is ${data.name || ""}. I confirm that I have completed my registration and have read and agree to the Collaboration Terms & Conditions.`,
+          `I would like to proceed with the collaboration. Please find my documents attached for your review.`,
+          ``,
+          `Details:`,
+          `• Email: ${data.email || ""}`,
+          `• Instagram: ${data.insta || ""}`,
+          `• TikTok: ${data.tiktok || ""}`,
+          `• Other Handles: ${data.audience || ""}`,
+          `• Portfolio: ${data.mediakit || ""}`,
+          `• Typical Rate / Budget: ${data.typical_rate || ""}`,
+          `• Country / State: ${data.country || ""}`,
+          `• Phone: ${data.phone || ""}`,
+          `• Preferred Payment Method: ${data.payment || ""}`,
+          ``,
+          `Kind regards,`,
+          `${data.name || ""}`
+        ].join("\n");
+
+        emailLink.innerHTML = `<i class="fas fa-envelope"></i> Send Email`;
+        // NOTE: mailto cannot attach the file automatically. The user will need to attach the downloaded PDF manually.
+        emailLink.href = `mailto:thebalmcollaboration@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyPlain)}`;
+
+        // small UX reminder when they click the email link
+        emailLink.addEventListener('click', () => {
+          setTimeout(() => {
+            alert('Please attach the downloaded PDF (collaboration agreement) to this email before sending.');
+          }, 200);
+        }, { once: true });
       }
     } catch (err) {
       console.warn("afterDownloadSuccess error:", err);
