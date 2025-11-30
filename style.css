@@ -17,7 +17,7 @@
   --radius: 10px;
 }
 
-/* Instructions block */
+/* ---------- INSTRUCTIONS BLOCK ---------- */
 .instructions{
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   background: linear-gradient(180deg, var(--instr-bg), #f3f7ff);
@@ -30,7 +30,6 @@
   margin: 14px 0;
 }
 
-/* Strong heading inside the box */
 .instructions > strong{
   display: block;
   font-weight: 600;
@@ -40,7 +39,6 @@
   letter-spacing: -0.01em;
 }
 
-/* Body text area (the inner div you used) */
 .instructions .body {
   color: var(--muted);
   font-size: 14px;
@@ -48,7 +46,6 @@
   margin-top: 6px;
 }
 
-/* Numbered step style (if you want clearer steps) */
 .instructions .body ol{
   margin: 8px 0 0 18px;
   padding: 0;
@@ -58,14 +55,13 @@
   margin: 6px 0;
 }
 
-/* Small screens: keep it compact */
 @media (max-width: 520px){
   .instructions{padding:12px}
   .instructions > strong{font-size:14px}
   .instructions .body{font-size:13.5px}
 }
 
-
+/* ---------- BASE TYPOGRAPHY & LAYOUT ---------- */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -95,14 +91,14 @@ img {
   border-radius: 6px;
 }
 
-/* ---------- FORM STYLES ---------- */
+/* ---------- FORM STYLES (base) ---------- */
 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-form input, 
+form input,
 form textarea {
   width: 100%;
   padding: 12px;
@@ -122,7 +118,7 @@ form > *:last-child {
 }
 
 /* ---------- BUTTONS ---------- */
-button, 
+button,
 input[type="submit"] {
   min-height: 44px;
   font-size: 16px;
@@ -198,62 +194,63 @@ input[type="submit"] {
 }
 
 /* ---------- TERMS & CONDITIONS ---------- */
-/* Terms & Conditions checkbox styling */
 .terms {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    color: #444;
-    background: #ffffff;
-    padding: 12px 18px;
-    border-radius: 8px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #444;
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 
 .terms:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .terms input[type="checkbox"] {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #bbb;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
 }
 
 .terms input[type="checkbox"]:checked {
-    background-color: #1f80e7;
-    border-color: #2c6080;
+  background-color: #1f80e7;
+  border-color: #2c6080;
 }
 
 .terms input[type="checkbox"]:checked::after {
-    content: "✔";
-    color: white;
-    position: absolute;
-    left: 3px;
-    top: -1px;
-    font-size: 14px;
+  content: "✔";
+  color: white;
+  position: absolute;
+  left: 3px;
+  top: -1px;
+  font-size: 14px;
 }
 
 .terms a {
-    color: #950000;
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
+  color: #950000;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .terms a:hover {
-    border-bottom: 1px solid #64183a;
-}/* ---------- LOADER (Centered Glow Spinner) ---------- */
+  border-bottom: 1px solid #64183a;
+}
+
+/* ---------- LOADER (Centered Glow Spinner) ---------- */
 .loader {
   position: fixed;
   top: 50%;
@@ -287,9 +284,9 @@ input[type="submit"] {
 /* ---------- LOADING OVERLAY ---------- */
 .loading-overlay {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   background: rgba(255,255,255,0.85);
   display: flex;
@@ -404,9 +401,9 @@ h3 {
 /* ---------- MODAL ---------- */
 .modal {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
   display: flex;
@@ -454,28 +451,6 @@ h3 {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ---------- Classic + Mobile-first Form Styles ---------- */
 .collab-form.classic {
   max-width: 880px;
@@ -488,12 +463,10 @@ h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* header */
 .form-head { text-align:center; margin-bottom:14px; }
 .form-head h2 { margin:0; font-size:22px; letter-spacing:0.2px; }
 .form-head .lead { margin:6px 0 0; color:#556; font-size:13px; }
 
-/* grid form */
 .field-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -525,7 +498,6 @@ h3 {
   box-shadow:0 6px 18px rgba(0,124,140,0.06);
 }
 
-/* Payment picker - classic tile style */
 .payment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -547,21 +519,18 @@ h3 {
 .payment-card .pc-left { font-weight:700; color:#102020; font-size:15px; }
 .payment-card .pc-right { font-size:12px; color:#667; }
 
-/* checked state (radio input is hidden but + label selector works) */
 input[type="radio"][name="pm"]:checked + label.payment-card {
   border-color: rgba(0,120,140,0.25);
   box-shadow: 0 16px 30px rgba(6,40,45,0.06);
   transform: translateY(-4px);
 }
 
-/* keyboard focus */
 .payment-card:focus {
   outline: 3px solid rgba(0,120,140,0.10);
   outline-offset: 2px;
   transform: translateY(-3px);
 }
 
-/* actions */
 .form-actions {
   display:flex;
   gap:12px;
@@ -593,7 +562,6 @@ input[type="radio"][name="pm"]:checked + label.payment-card {
   border-color: rgba(6,20,20,0.06);
 }
 
-/* small screens: single-column stacked layout and bigger touch areas */
 @media (max-width: 900px) {
   .field-grid { grid-template-columns: 1fr; }
   .form-head h2 { font-size:20px; }
@@ -602,7 +570,6 @@ input[type="radio"][name="pm"]:checked + label.payment-card {
   .btn { width:100%; justify-content:center; padding:12px; }
 }
 
-/* very small screens */
 @media (max-width: 420px) {
   .collab-form.classic { padding:16px; margin:8px; }
   .form-head .lead { font-size:12px; }
