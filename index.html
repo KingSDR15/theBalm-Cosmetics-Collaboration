@@ -27,14 +27,14 @@
     <h1><i class="fas fa-gem"></i>Partnership Inquiry Form</h1>
     <p>
       Join our premium campaign. Fill the form, agree to our terms, choose up to
-      <strong>20 items</strong> from our
+      <strong>30 items</strong> from our
       <a href="https://thebalm.com/" target="_blank" rel="noopener">Shop</a>,
       and we’ll prepare your package.
     </p>
-  <div class="instructions" aria-live="polite">
-<p style="margin:0;color:var(--muted);font-size:14px">Please read the Terms &amp; Conditions and submit the PDF document for review — your collaboration request will be processed after submission.</p>
-</div>
-</div>
+    <div class="instructions" aria-live="polite">
+      <p style="margin:0;color:var(--muted);font-size:14px">Please read the Terms &amp; Conditions and submit the PDF document for review — your collaboration request will be processed after submission.</p>
+    </div>
+
     <!-- ---------- FORM START ---------- -->
     <form id="collabForm" class="collab-form classic" novalidate>
       <div class="field-grid">
@@ -54,6 +54,31 @@
         </div>
 
         <div class="form-group">
+          <label for="tiktok">TikTok handle</label>
+          <input id="tiktok" name="tiktok" type="text" placeholder="@yourtiktok">
+        </div>
+
+        <div class="form-group">
+          <label for="audience">Other Handles</label>
+          <input id="audience" name="audience" type="text" placeholder="e.g. Facebook, Twitch">
+        </div>
+
+        <div class="form-group">
+          <label for="mediakit">Portfolio (URL)</label>
+          <input id="mediakit" name="mediakit" type="url" placeholder="Optional">
+        </div>
+
+        <div class="form-group">
+          <label for="typical_rate">Typical rate / budget (optional)</label>
+          <input id="typical_rate" name="typical_rate" type="text" placeholder="e.g. $300 per post">
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country / State</label>
+          <input id="country" name="country" type="text" placeholder="Country / State" required>
+        </div>
+
+        <div class="form-group">
           <label for="phone">Phone number</label>
           <input id="phone" name="phone" type="tel" placeholder="+1 555 123 4567" required>
         </div>
@@ -64,9 +89,10 @@
         <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP" required></textarea>
       </div>
 
-      <!-- Payment selector -->      <div class="form-group">
+      <!-- Payment selector -->
+      <div class="form-group">
         <label class="section-label">Preferred payment method</label>
-        <input type="hidden" id="paymentMethodHidden" name="paymentMethod" value="Chime">
+        <input type="hidden" id="paymentMethodHidden" name="paymentMethod" value="">
 
         <div class="payment-grid" role="radiogroup" aria-label="Payment method">
 
@@ -80,31 +106,40 @@
             <div class="pc-left">PayPal</div><div class="pc-right">Secure</div>
           </label>
 
-          <input type="radio" id="pm-zelle" name="pm" value="Zelle" hidden>
-          <label for="pm-zelle" class="payment-card" tabindex="0" role="radio">
-            <div class="pc-left">Zelle</div><div class="pc-right">Instant</div>
+          <input type="radio" id="pm-stripe" name="pm" value="Stripe Card" hidden>
+          <label for="pm-stripe" class="payment-card" tabindex="0" role="radio">
+            <div class="pc-left">Card (Stripe)</div><div class="pc-right">Visa • Mastercard</div>
           </label>
 
-          <input type="radio" id="pm-card" name="pm" value="Online Card Purchase" hidden>
-          <label for="pm-card" class="payment-card" tabindex="0" role="radio">
-            <div class="pc-left">Online Card</div><div class="pc-right">E-Gift Card</div>
+          <input type="radio" id="pm-bank" name="pm" value="Bank Transfer" hidden>
+          <label for="pm-bank" class="payment-card" tabindex="0" role="radio">
+            <div class="pc-left">Bank Transfer</div><div class="pc-right">SWIFT / IBAN</div>
+          </label>
+
+          <input type="radio" id="pm-crypto" name="pm" value="Crypto (BTC/ETH)" hidden>
+          <label for="pm-crypto" class="payment-card" tabindex="0" role="radio">
+            <div class="pc-left">Crypto</div><div class="pc-right">BTC • ETH</div>
+          </label>
+
+          <input type="radio" id="pm-invoice" name="pm" value="PayPal Invoice" hidden>
+          <label for="pm-invoice" class="payment-card" tabindex="0" role="radio">
+            <div class="pc-left">Invoice</div><div class="pc-right">PayPal / Bank</div>
           </label>
 
           <input type="radio" id="pm-binance" name="pm" value="Binance Transfer" hidden>
           <label for="pm-binance" class="payment-card" tabindex="0" role="radio">
-            <div class="pc-left">Binance</div><div class="pc-right">Crypto</div>
+            <div class="pc-left">Binance</div><div class="pc-right">Crypto Exchange</div>
           </label>
         </div>
       </div>
 
-      <!-- Image uploads (20 inputs) -->
+      <!-- Image uploads (30 inputs) -->
       <div class="form-group">
-        <label class="section-label">Upload up to 20 item screenshots</label>
-       <p class="section-description">Take screenshots of the items you want from our <a href="https://thebalm.com/" target="_blank">Shop</a>. Upload them below: and upload them here.</p>
+        <label class="section-label">Upload up to 30 item screenshots</label>
+       <p class="section-description">Take screenshots of the items you want from our <a href="https://thebalm.com/" target="_blank">Shop</a>. Upload them below.</p>
 
         <div class="image-upload-grid" id="imageUploadGrid" aria-label="Upload screenshots">
-          <!-- generate 20 file inputs named img1..img20 -->
-          <!-- I'll explicitly include all 20 so the script's for loop aligns -->
+
           <div class="upload-cell"><label class="upload-label"><input id="img1"  name="img1"  type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img1"></label></div>
           <div class="upload-cell"><label class="upload-label"><input id="img2"  name="img2"  type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img2"></label></div>
           <div class="upload-cell"><label class="upload-label"><input id="img3"  name="img3"  type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img3"></label></div>
@@ -129,16 +164,30 @@
           <div class="upload-cell"><label class="upload-label"><input id="img18" name="img18" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img18"></label></div>
           <div class="upload-cell"><label class="upload-label"><input id="img19" name="img19" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img19"></label></div>
           <div class="upload-cell"><label class="upload-label"><input id="img20" name="img20" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img20"></label></div>
+
+          <div class="upload-cell"><label class="upload-label"><input id="img21" name="img21" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img21"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img22" name="img22" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img22"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img23" name="img23" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img23"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img24" name="img24" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img24"></label></div>
+
+          <div class="upload-cell"><label class="upload-label"><input id="img25" name="img25" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img25"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img26" name="img26" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img26"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img27" name="img27" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img27"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img28" name="img28" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img28"></label></div>
+
+          <div class="upload-cell"><label class="upload-label"><input id="img29" name="img29" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img29"></label></div>
+          <div class="upload-cell"><label class="upload-label"><input id="img30" name="img30" type="file" accept="image/*"><div class="upload-placeholder">+</div><img class="thumb" alt="preview img30"></label></div>
+
         </div>
       </div>
 
       <label class="terms">
         <input type="checkbox" id="agree" required>
-        <span>I agree to the <a href="thebalms.pdf" target="_blank">Collaboration Terms & Conditions</a></span>
+        <span>I agree to the <a href="theBalm.pdf" target="_blank">Collaboration Terms &amp; Conditions</a></span>
       </label>
 
       <div class="form-actions">
-        <button type="submit" class="btn-glow submit-primary">Submit & Preview</button>
+        <button type="submit" class="btn-glow submit-primary">Submit &amp; Preview</button>
       </div>
     </form>
     <!-- ---------- FORM END ---------- -->
@@ -167,7 +216,7 @@
       <div class="preview-images" id="previewImages"></div>
 
       <div class="modal-buttons">
-        <button id="confirmDownload" class="btn-glow">Confirm & Download PDF</button>
+        <button id="confirmDownload" class="btn-glow">Confirm &amp; Download PDF</button>
         <button id="cancelPreview" class="btn-glow" style="background:#ccc; color:#333;">Edit Info</button>
       </div>
     </div>
